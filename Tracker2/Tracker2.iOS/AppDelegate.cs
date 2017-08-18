@@ -11,13 +11,17 @@ namespace Tracker2.iOS
         // class-level declarations
         UIWindow window;
         TabController tabController;
+        UINavigationController navController;
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             var tabController = new TabController();
-            window.RootViewController = tabController;
+            var navController = new UINavigationController();
+
+            navController.PushViewController(tabController, false);
+            window.RootViewController = navController;
 
             window.MakeKeyAndVisible();
 
